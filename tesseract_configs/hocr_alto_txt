@@ -1,0 +1,6 @@
+###
+### Create ALTO, hOCR and txt outputs
+###
+tessedit_create_alto 1
+tessedit_create_hocr 1
+tessedit_create_txt 1
