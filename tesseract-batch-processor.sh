@@ -60,6 +60,7 @@ EOF
 processFolder() {
   DATA_PATH=${1}
   PACKAGE_NAME=${2}
+  TESSERACT_CONFIG=${3}
 
   declare -a processed
 
@@ -76,28 +77,37 @@ processFolder() {
         -e "TESSDATA_PREFIX=/tessdata" \
         -w /app \
         clearlinux/tesseract-ocr \
-        tesseract --psm 6 $f $BASENAME
+        tesseract $f $BASENAME --psm 6 $TESSERACT_CONFIG
 
       processed+=("$f")
       processed+=("$BASENAME.txt")
     fi
   done
   for name in "${processed[@]}" ; do
-    zip -u $PACKAGE_NAME $name
+    zip -u $PACKAGE_NAME ${name}
   done
 }
 
 # 
 # Script args
 #
-usage() { echo "Usage: $0 [-d <string>] [-n <string>]" 1>&2; exit 1; }
-while getopts ":d:n:" o; do
+usage() { 
+  echo "Usage: $0 [-d ] [-n ] [ -c ]" 1>&2; 
+  echo "-d datapath (required)"
+  echo "-n name for the bundle (required)"
+  echo "-c tesseract config file - must be in the same folder as the data being processed (optional)"
+  exit 1; 
+}
+while getopts ":d:n:c:" o; do
     case "${o}" in
         d)
             DATA_PATH=${OPTARG}
             ;;
         n)
             PACKAGE_NAME=${OPTARG}
+            ;;
+        c)  
+            TESSERACT_CONFIG=${OPTARG}
             ;;
         *)
             usage
@@ -111,7 +121,7 @@ shift $((OPTIND-1))
 #
 if [ ! -z "${DATA_PATH}" ] && [ ! -z "${PACKAGE_NAME}" ]; then
   setup
-  processFolder $DATA_PATH $PACKAGE_NAME
+  processFolder $DATA_PATH $PACKAGE_NAME $TESSERACT_CONFIG
   exit 0
 fi
 
