@@ -23,6 +23,7 @@ Download it to your machine with:
 
 ```
 > curl https://raw.githubusercontent.com/CoEDL/nyingarn-tesseract-processor/master/tesseract-batch-processor.sh --output tesseract-batch-processor.sh
+> chmod +x tesseract-batch-processor.sh
 ```
 
 You can put it anywhere.
