@@ -2,6 +2,7 @@
 
 - [Nyingarn Tesseract Processor](#nyingarn-tesseract-processor)
   - [Dependencies](#dependencies)
+  - [Running the script](#running-the-script)
   - [Interactive](#interactive)
   - [Batch](#batch)
 
@@ -15,6 +16,18 @@ The tool has two modes of operation:
 ## Dependencies
 
 This must be run on a server with docker and bash. That's it.
+
+## Running the script
+
+Download it to you machine with:
+
+```
+> curl https://raw.githubusercontent.com/CoEDL/nyingarn-tesseract-processor/master/tesseract-batch-processor.sh --output tesseract-batch-processor.sh
+```
+
+You can put it anywhere.
+
+Then run it as described following.
 
 ## Interactive
 
