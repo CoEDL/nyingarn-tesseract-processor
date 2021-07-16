@@ -19,7 +19,7 @@ This must be run on a server with docker and bash. That's it.
 
 ## Running the script
 
-Download it to you machine with:
+Download it to your machine with:
 
 ```
 > curl https://raw.githubusercontent.com/CoEDL/nyingarn-tesseract-processor/master/tesseract-batch-processor.sh --output tesseract-batch-processor.sh
